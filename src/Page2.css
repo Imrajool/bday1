@@ -1,0 +1,144 @@
+.page2-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+.page2-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page2-title {
+  text-align: center;
+  color: white;
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-item {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.gallery-item::before {
+  content: '🌸 🌺 🌼 🌻 🌷 🌹';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  opacity: 0.15;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.gallery-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  display: block;
+  background: linear-gradient(135deg, #fff5f7 0%, #ffe8ed 100%);
+  position: relative;
+  z-index: 2;
+}
+
+.gallery-video {
+  width: 100%;
+  height: 280px;
+  display: block;
+  background: #000;
+  position: relative;
+  z-index: 2;
+}
+
+.gallery-quote {
+  padding: 20px;
+  font-size: 1em;
+  color: #333;
+  text-align: center;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+.continue-btn {
+  display: block;
+  margin: 40px auto;
+  background: white;
+  color: #f5576c;
+  border: none;
+  padding: 15px 50px;
+  font-size: 1.1em;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.continue-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.continue-btn:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .page2-title {
+    font-size: 2em;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

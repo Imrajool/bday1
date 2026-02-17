@@ -1,0 +1,122 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Rose</title>
+<style>
+  body, html {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffdee9;  /* cute gradient */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #ff69b4;
+    text-shadow: 2px 2px 10px #fff;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  button {
+    margin-top: 40px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ff69b4, #ffb6c1);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+<h1>Happy Birthday Rose!</h1>
+<button onclick="goNext()">Ulla Poi Paaru</button>
+
+<script>
+  // Simple confetti effect
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const confetti = [];
+  const colors = ['#ff69b4','#ff1493','#ffd700','#ff4500','#00ffff','#8a2be2'];
+
+  for(let i=0;i<200;i++){
+    confetti.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height - canvas.height,
+      r: Math.random()*6+4,
+      d: Math.random()*canvas.height,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      tilt: Math.random()*10-10,
+      tiltAngleIncremental: Math.random()*0.07+0.05,
+      tiltAngle:0
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    confetti.forEach(c=>{
+      ctx.beginPath();
+      ctx.lineWidth = c.r/2;
+      ctx.strokeStyle = c.color;
+      ctx.moveTo(c.x+c.tilt+c.r/4, c.y);
+      ctx.lineTo(c.x+c.tilt, c.y+c.tilt+c.r/4);
+      ctx.stroke();
+    });
+    update();
+  }
+
+  function update(){
+    confetti.forEach(c=>{
+      c.tiltAngle += c.tiltAngleIncremental;
+      c.y += (Math.cos(c.d)+3+c.r/2)/2;
+      c.x += Math.sin(c.tiltAngle);
+      c.tilt = Math.sin(c.tiltAngle)*15;
+
+      if(c.y > canvas.height){
+        c.y = -10;
+        c.x = Math.random()*canvas.width;
+      }
+    });
+  }
+
+  setInterval(draw, 20);
+
+  function goNext(){
+    window.location.href = "page2.html";
+  }
+</script>
+
+</body>
+</html>

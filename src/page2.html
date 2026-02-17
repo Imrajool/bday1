@@ -1,0 +1,91 @@
+<!-- page2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rose's Gallery</title>
+<style>
+  body, html {
+    margin:0;
+    padding:0;
+    font-family: 'Comic Sans MS', cursive;
+    background: url('./img/r2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+  }
+  .item {
+    margin: 15px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: transform 0.3s;
+  }
+  .item img, .item video {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  .item:hover {
+    transform: scale(1.1);
+  }
+  .quote {
+    position: absolute;
+    bottom:0;
+    background: rgba(0,0,0,0.6);
+    width:100%;
+    text-align:center;
+    padding:5px;
+    font-size:0.9em;
+    display:none;
+  }
+  button {
+    display:block;
+    margin: 40px auto;
+    padding: 15px 30px;
+    font-size:1.2em;
+    border:none;
+    border-radius:25px;
+    background: linear-gradient(45deg,#ff69b4,#ffb6c1);
+    color:white;
+    cursor:pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="item" onclick="showQuote(this)">
+    <img src="./img/r1.jpg" alt="">
+    <div class="quote">"You are my sun in every cloudy day"</div>
+  </div>
+  <div class="item" onclick="showQuote(this)">
+    <video src="./img/rv.MP4" muted></video>
+    <div class="quote">"Every moment with you is magic"</div>
+  </div>
+  <!-- Add more photos/videos similarly -->
+</div>
+
+<button onclick="goNext()">Avlodha Mudinji</button>
+
+<script>
+  function showQuote(el){
+    const quote = el.querySelector('.quote');
+    quote.style.display = quote.style.display==='block' ? 'none':'block';
+  }
+
+  function goNext(){
+    window.location.href = "page3.html";
+  }
+</script>
+
+</body>
+</html>
