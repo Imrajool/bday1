@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Confetti from 'react-confetti';
 import Snowfall from 'react-snowfall';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Page2.css';
 import r1 from './img/r1.jpg';
 import r2 from './img/r2.jpg';
@@ -19,6 +19,18 @@ function Page2() {
     width: window.innerWidth,
     height: window.innerHeight,
   });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimension({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleButtonClick = () => {
     setShowConfetti(true);
